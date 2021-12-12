@@ -32,7 +32,7 @@ dotnet add ./<project>.Tests/<project>.Tests.csproj reference ./<project>/<proje
 ```
 ## some library
 | Package | Reference |Note|
-| ------ | ------ | ------ |
+|:-------------|:------------------|:------|
 | Microsoft.EntityFrameworkCore | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/) | ORM |
 | Microsoft.EntityFrameworkCore.Design | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design/) | Migration |
 | Microsoft.EntityFrameworkCore.Inmemory | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Inmemory/) | DB in ram |
