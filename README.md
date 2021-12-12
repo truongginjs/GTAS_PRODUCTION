@@ -2,10 +2,12 @@
 
 ## architecture & Diagram
 - *usercase diagram:*
-![usercase diagram](https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg)
+
+![usercase diagram](./resources/Product-usecase.drawio.png)
 
 - *dataflow diagram:*
-![dataflow diagram](https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg)
+
+![dataflow diagram](./resources/GTAS_Product-Dataflow.drawio.png)
 
 - GTAS-PRODUCTION usercase diagram: [usercase diagram](https://drive.google.com/file/d/1DH9g1VjI8XE_1lpWN_k5JpXghl4z1EMC/view?usp=sharing)
 - GTAS-PRODUCTION dataflow diagram: [dataflow diagram](https://drive.google.com/file/d/19TV8ix1EFBFf_BYmK_mZSFgVybAXy7Uf/view?usp=sharing)
