@@ -1,6 +1,7 @@
 # GTAS-PRODUCTION
 
 ## architecture & Diagram
+
 - *usercase diagram:*
 
 ![usercase diagram](./resources/Product-usecase.drawio.png)
@@ -17,7 +18,9 @@
 
 
 ## Create solution 
+
 ### script to create
+
 ```sh
 mkdir <solution>
 dotnet new webapi <Project>
@@ -30,7 +33,9 @@ dotnet sln add ./<project>.Tests/<project>.Tests.csproj
 
 dotnet add ./<project>.Tests/<project>.Tests.csproj reference ./<project>/<project>.csproj
 ```
+
 ## some library
+
 | Package | Reference |Note|
 |:-------------|:------------------|:------|
 | Microsoft.EntityFrameworkCore | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/) | ORM |
@@ -48,9 +53,11 @@ dotnet add ./<project>.Tests/<project>.Tests.csproj reference ./<project>/<proje
 |Swashbuckle.AspNetCore|[nuget](https://www.nuget.org/packages/Grpc.Tools/)|API UI
 
 ### script
+
 ```sh
 dotnet add package <package>
 ```
+
 ## build, run, test and debug
 
 ```sh
@@ -66,6 +73,7 @@ dotnet test
 debug  press "F5" to create .vscode and debug
 
 ## migration and seeddata
+
 ```sh
 dotnet-ef migrations add <Name>
 dotnet-ef database update
@@ -77,6 +85,7 @@ dotnet-ef migrations remove #--force to force warning
 ```
 
 ## tools
+
 ```sh
 #install local tool
 dotnet tool install <directory> <command> [--version <version>]
@@ -87,7 +96,9 @@ dotnet <command> [args]
 ```
 
 ### example: 
+
 #### cipher tool
+
 ```sh
 dotnet new tool-manifest
 #install
@@ -95,15 +106,20 @@ dotnet tool install --add-source .\BuildingBlocks\SINNIKA.Cipher\SINNIKA.Cipher.
 #uninstall
 dotnet tool uninstall sinnika.cipher.tool
 #encrypt
-dotnet sinnika.cipher -e -t 'hello' -p 'salt'
+dotnet sinnika.cipher --encrypt -t 'hello' -p 'salt'
 #decrypt
-dotnet sinnika.cipher -d -t '7H7lCXt6RqSyo86nMKCIvIH2dJzG3/UV0J7uJQz0StJ+2GEL5y56u1XErgP4kzbZ' -p 'salt'
+dotnet sinnika.cipher --decrypt -t '7H7lCXt6RqSyo86nMKCIvIH2dJzG3/UV0J7uJQz0StJ+2GEL5y56u1XErgP4kzbZ' -p 'salt'
 
 ```
+
 ## envaironment
 
 ## Docker
+
 ## Author
+
 NMT, PPJ
+
 ## License
+
 Empty
