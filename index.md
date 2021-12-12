@@ -1,37 +1,109 @@
-## Welcome to GitHub Pages
+# GTAS-PRODUCTION
 
-You can use the [editor on GitHub](https://github.com/truongginjs/GTAS_PRODUCTION/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## architecture & Diagram
+- *usercase diagram:*
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![usercase diagram](./resources/Product-usecase.drawio.png)
 
-### Markdown
+- *dataflow diagram:*
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+![dataflow diagram](./resources/GTAS_Product-Dataflow.drawio.png)
 
-```markdown
-Syntax highlighted code block
+- GTAS-PRODUCTION usercase diagram: [usercase diagram](https://drive.google.com/file/d/1DH9g1VjI8XE_1lpWN_k5JpXghl4z1EMC/view?usp=sharing)
+- GTAS-PRODUCTION dataflow diagram: [dataflow diagram](https://drive.google.com/file/d/19TV8ix1EFBFf_BYmK_mZSFgVybAXy7Uf/view?usp=sharing)
+- GTAS-PRODUCTION Architecture: [QC-App-Arch](https://drive.google.com/file/d/1QwGQJ9Lrs_HuDoA6GjGdC_c4yKVjLs_P/view?usp=sharing)
+- Microservice architecture: [MS-Arch](https://drive.google.com/file/d/1KTeB6w2x79cIf6x9pQRtaL6MjfCTnq68/view?usp=sharing)
+- Design: [Design](./#)
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+## Create solution 
+### script to create
+```sh
+mkdir <solution>
+dotnet new webapi <Project>
+dotnet new xunit <Project>.Tests
 
-1. Numbered
-2. List
+dotnet new sln <solution>
 
-**Bold** and _Italic_ and `Code` text
+dotnet sln add ./<project>/<project>.csproj
+dotnet sln add ./<project>.Tests/<project>.Tests.csproj
 
-[Link](url) and ![Image](src)
+dotnet add ./<project>.Tests/<project>.Tests.csproj reference ./<project>/<project>.csproj
+```
+## some library
+| Package | Reference |Note|
+| ------ | ------ | ------ |
+| Microsoft.EntityFrameworkCore | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/) | ORM |
+| Microsoft.EntityFrameworkCore.Design | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design/) | Migration |
+| Microsoft.EntityFrameworkCore.Inmemory | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Inmemory/) | DB in ram |
+| Microsoft.EntityFrameworkCore.SqlServer | [nuget](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) | connect to sqlserver |
+| AutoMapper.Extensions.Microsoft.DependencyInjection | [nuget](https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/) | mapping |
+| GraphQL | [nuget](https://www.nuget.org/packages/GraphQL/) | graphql type |
+| GraphQL.Server.Core | [nuget](https://www.nuget.org/packages/GraphQL.Server.Core/) | graphql server |
+| GraphQL.Server.Transports.AspNetCore | [nuget](https://www.nuget.org/packages/GraphQL.Server.Transports.AspNetCore/) | auto |
+| GraphQL.Server.Transports.AspNetCore.SystemTextJson | [nuget](https://www.nuget.org/packages/GraphQL.Server.Transports.AspNetCore.SystemTextJson/) | auto |
+| GraphQL.Server.UI.GraphiQL | [nuget](https://www.nuget.org/packages/GraphQL.Server.UI.GraphiQL/) | graphql UI |
+| Grpc.AspNetCore | [nuget](https://www.nuget.org/packages/Grpc.AspNetCore/) | grpc |
+| Grpc.Tools | [nuget](https://www.nuget.org/packages/Grpc.Tools/) | grpc build proto |
+|Swashbuckle.AspNetCore|[nuget](https://www.nuget.org/packages/Grpc.Tools/)|API UI
+
+### script
+```sh
+dotnet add package <package>
+```
+## build, run, test and debug
+
+```sh
+dotnet restore
+dotnet build
+
+dotnet run
+dotnet watch run
+
+dotnet test
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+debug  press "F5" to create .vscode and debug
 
-### Jekyll Themes
+## migration and seeddata
+```sh
+dotnet-ef migrations add <Name>
+dotnet-ef database update
+# down
+dotnet-ef update <previous-mrg-name>
+# to turn back database
+dotnet-ef database update 0 
+dotnet-ef migrations remove #--force to force warning 
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/truongginjs/GTAS_PRODUCTION/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## tools
+```sh
+#install local tool
+dotnet tool install <directory> <command> [--version <version>]
+#uninstall
+dotnet tool uninstall <command> 
+# call
+dotnet <command> [args]
+```
 
-### Support or Contact
+### example: 
+#### cipher tool
+```sh
+dotnet new tool-manifest
+#install
+dotnet tool install --add-source .\BuildingBlocks\SINNIKA.Cipher\SINNIKA.Cipher.Tool\nupkg sinnika.cipher.tool
+#uninstall
+dotnet tool uninstall sinnika.cipher.tool
+#encrypt
+dotnet sinnika.cipher -e -t 'hello' -p 'salt'
+#decrypt
+dotnet sinnika.cipher -d -t '7H7lCXt6RqSyo86nMKCIvIH2dJzG3/UV0J7uJQz0StJ+2GEL5y56u1XErgP4kzbZ' -p 'salt'
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+```
+## envaironment
+
+## Docker
+## Author
+NMT, PPJ
+## License
+Empty
